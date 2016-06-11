@@ -1,0 +1,20 @@
+<!--
+  This template loads for the 'tab.listing-detail' state (app.js)
+-->
+<ion-view view-title="{{listing.title}}" hide-nav-bar="false">
+  <ion-content>
+      <h2>{{listing.title}}</h2>
+
+
+      <div ng-if="listing.cost">
+          <h2>Cost</h2>
+          {{listing.cost}}
+      </div>
+      <h3>Location</h3>
+      <p>{{listing.location}}</p>
+      <h3>Description</h3>
+      <p>{{listing.description}}</p>
+      <h3>Category</h3>
+      <p>{{listing.category}}</p>
+  </ion-content>
+</ion-view>

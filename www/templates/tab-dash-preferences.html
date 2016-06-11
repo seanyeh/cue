@@ -1,0 +1,21 @@
+<ion-view view-title="Preferences" hide-nav-bar="false">
+    <ion-content class="padding">
+        <h3>Filter Events</h3>
+        <ion-toggle ng-model="preferencesModel.showFiltered"
+                    ng-change="updatePreferences()"
+            >
+            {{preferencesModel.showFiltered?"Showing filtered events":"Showing all events"}}
+        </ion-toggle>
+
+        <h3>Categories</h3>
+        <ion-list>
+            <ion-checkbox ng-disabled="!preferencesModel.showFiltered"
+                          ng-repeat="cat in CATEGORIES"
+                          ng-change="updatePreferences()"
+                          ng-model="preferencesModel.categories[cat]">
+                {{cat}}
+            </ion-checkbox>
+        </ion-list>
+    </ion-content>
+</ion-view>
+

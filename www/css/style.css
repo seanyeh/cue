@@ -1,0 +1,46 @@
+/* .mfb-component__button--main.mycolor { */
+/*     background: teal !important; */
+/* } */
+
+#map {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    /* height: 400px; */
+    width: 100%;
+}
+
+.event-past {
+    color: red;
+}
+
+.event-future {
+    color: green;
+}
+
+
+.col-70px {
+-webkit-box-flex: 0;
+-webkit-flex: 0 0 70px;
+-moz-box-flex: 0;
+-moz-flex: 0 0 70px;
+-ms-flex: 0 0 70px;
+flex: 0 0 70px;
+max-width: 70px;
+}
+
+.date-icon {
+    text-align: center;
+
+    /* position: relative; */
+    /* top: 50%; */
+    /* transform: translateY(-50%); */
+}
+
+.bigdate {
+    font-size: 48px;
+}
+
+.date-icon > div {
+    padding: 5px;
+}

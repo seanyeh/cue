@@ -1,0 +1,83 @@
+<ion-nav-view name="tab-dash">
+
+
+<ion-view ng-if="isMap" view-title="Cue" hide-nav-bar="false">
+  <ion-content scroll="false">
+    <div ng-controller="mapController" ng-init="init()">
+    <div id="map"></div>
+
+
+    </div>
+  </ion-content>
+</ion-view>
+
+
+
+<ion-view ng-if="!isMap" view-title="Listings" hide-nav-bar="false">
+    <ion-content>
+        <ion-list>
+            <ion-item ng-if="filteredData.length === 0">
+                (No events found)
+            </ion-item>
+            <ion-item class="item-remove-animate item-icon-right"
+                      ng-repeat="item in filteredData track by $index"
+                      type="item-text-wrap"
+                      href="#/tab/listings/{{::item.id}}">
+                <div class="row">
+                    <div class="col col-70px">
+                        <div class="date-icon">
+                            <div class="bigdate">
+                                {{::toHumanDate(item.datetime_start)}}
+                            </div>
+                            <div> {{::toHumanMonth(item.datetime_start)}} </div>
+                        </div>
+                    </div>
+
+                    <div class="col">
+                <h2>{{::item.title}}</h2>
+                <h3>
+                    <span ng-class="(createDate() > createDate(item.datetime_start))? 'event-past': 'event-future'">
+                        {{::toHumanTime(item.datetime_start)}}
+                    </span>
+                    &nbsp-&nbsp
+                    <span ng-class="(createDate() > createDate(item.datetime_end))? 'event-past': 'event-future'">
+                        {{::toHumanTime(item.datetime_end)}}
+                    </span>
+                </h3>
+                <p>{{::item.description}}</p>
+                <i class="icon ion-chevron-right icon-accessory"></i>
+                    </div>
+                </div>
+            </ion-item>
+        </ion-list>
+    </ion-content>
+</ion-view>
+
+<!-- <nav mfb&#45;menu position="bl" effect="zoomin" -->
+<!--      active&#45;icon="ion&#45;navicon&#45;round" resting&#45;icon="ion&#45;navicon&#45;round" -->
+<!--      toggling&#45;method="click" -->
+<!--      menu&#45;state="menuState" -->
+<!--      click&#45;anywhere&#45;but&#45;here="closeMenu()" -->
+<!--      > -->
+<!-- <button mfb&#45;button icon="ion&#45;earth" label="All events" ng&#45;click="hello()"></button> -->
+<!-- <button mfb&#45;button icon="ion&#45;star" label="Recommended events" ng&#45;click=""></button> -->
+<!-- <button mfb&#45;button icon="ion&#45;wrench" label="Customize" ng&#45;click="dashGoto('tab.dash&#45;preferences')"></button> -->
+<!--  -->
+<!-- </nav> -->
+
+<nav mfb-menu position="bl"
+     active-icon="ion-wrench" resting-icon="ion-wrench"
+                              menu-state="menuState"
+                              main-action="dashGoto('tab.dash-preferences')"
+     toggling-method="click">
+</nav>
+
+
+<nav mfb-menu position="br" effect="zoomin"
+     active-icon="ion-map" resting-icon="ion-calendar"
+                           main-action="toggleMap()"
+     toggling-method="click">
+</nav>
+
+
+</ion-nav-view>
